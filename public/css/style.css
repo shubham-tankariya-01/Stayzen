@@ -1,0 +1,227 @@
+:root {
+  /* ===== Indigo Shades ===== */
+  --indigo-100: #e0cffc;
+  --indigo-200: #c29ffa;
+  --indigo-300: #a370f7;
+  --indigo-400: #8540f5;
+  --indigo-500: #6610f2; /* Primary Indigo */
+  --indigo-600: #520dc2;
+  --indigo-700: #3d0a91;
+  --indigo-800: #290661;
+  --indigo-900: #140330;
+  --light:white;
+
+  /* ===== Semantic Mapping (Recommended) ===== */
+  --color-indigo-primary: var(--indigo-500);
+  --color-indigo-light: var(--indigo-100);
+  --color-indigo-dark: var(--indigo-900);
+
+  --color-indigo-hover: var(--indigo-600);
+  --color-indigo-soft-bg: #f3f0ff;
+}
+body{
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+textarea{
+    resize: none;
+    height: 120px;
+}
+/* -----------------------------navbar------------------------------ */
+
+.navbar{
+    height: 4.5rem;
+    background-color: var(--indigo-500);
+    font-family: "Varela Round";
+    /* box-shadow: 0px 0px 2px 1px var(--indigo-700); */
+}
+
+.fa-earth-americas{
+    color: var(--light);
+    font-size: 2rem;
+}
+
+.nav-link{
+    color: var(--light);
+    font-size: 1.1rem;
+    font-weight: 500;
+}
+
+/* ----------------------------footer-------------------------------- */
+.f-info{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--indigo-500);
+    color: var(--light);
+    padding: 10PX 10PX;
+}
+.f-info-div{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
+    width: 100% ;
+}
+
+.f-info-socials i{
+    font-size: 1.4rem;
+    margin-right: 5px ;
+}
+.f-info-links a {
+    text-decoration: none;
+    color: var(--light);
+    margin-right: 5px ;
+}
+.f-info-links a:hover{
+    text-decoration: underline;
+}
+
+/* -----------------------------------------------cards---------------------------------- */
+
+.content-section {
+  padding: 0 1rem;   /* mobile first */
+  flex: 1;
+
+}
+
+/* ≥576px (small devices) */
+@media (min-width: 576px) {
+  .content-section {
+    padding: 0 2rem;
+  }
+}
+
+/* ≥768px (tablets) */
+@media (min-width: 768px) {
+  .content-section {
+    padding: 0 3rem;
+  }
+}
+
+/* ≥992px (desktops) */
+@media (min-width: 992px) {
+  .content-section {
+    padding: 0 5.5rem;
+  }
+}
+.listing-grid a{
+    text-decoration: none;
+    color: #000;
+}
+
+.listing-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 1rem;
+}
+
+/* Card */
+.listing-card {
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+}
+
+/* Square image */
+.listing-image {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  border-radius: 12px;
+  max-width: 200px;
+}
+.listing-card:hover .listing-image{
+    background-color: #ffffff;
+    opacity: 0.7;
+}
+
+/* Text area */
+.listing-details {
+  padding: 0.5rem 0rem 0 0.1rem;
+  font-family: "Nunito";
+}
+.listing-details h4{
+    font-size: 0.9rem;
+    font-weight: 700 !important;
+}
+/* Title */
+.listing-title {
+  font-size: 0.9rem;
+  font-weight: 600;
+  margin: 0;
+  line-height: 1.2;
+}
+
+/* Price */
+.listing-price {
+  font-size: 0.85rem;
+  margin: 0.2rem 0 0;
+}
+
+/* -------------------------new-form----------------------------- */
+
+.new-form{
+    border: 2px solid var(--indigo-400);
+    padding: 20px 30px;
+    border-radius: 20px;
+    box-shadow: 0 0 3px 1px rgba(0, 0, 0, 0.215);
+}
+.new-form h3{
+   font-family: "nunito";
+   font-weight: 700;
+   font-size: 2.2rem;
+   margin-bottom: 15px;
+}
+.mb-3 label{
+    font-size: 1.2rem;
+    font-weight: 400;
+    font-family: "Nunito";
+    margin-bottom: 3px;
+}
+.btn{
+    background-color: var(--light);
+    color: var(--indigo-600);
+    border: 2px solid var(--indigo-400);
+    padding: 5px 10px;
+    font-size: 1.1rem;
+    font-weight: 700;
+    transition: 0.1s ease-in;
+
+}
+.btn:hover{
+    background-color: var(--indigo-700);
+    transform: scale(1.05);
+    color: white;
+}
+
+/* -------------------------------------show-page----------------------------------------------------- */
+.show-img{
+  height: 40vh;
+  width: 100%;
+  object-fit: cover;
+}
+.btns{
+  flex-wrap: wrap;
+}
+.btn-show{
+  width: 15%;
+  height: fit-content;
+  margin: 10px 10px 20px 10px ;
+}
+.btn-delete{
+  width: 100%;
+  border: 2px solid rgb(255, 19, 11);
+  color: rgb(255, 19, 11);
+}
+.btn-delete:hover{
+  color: var(--light);
+  background-color: rgb(255, 19, 11);
+}
+.card-text {
+  margin-bottom: 0.5rem;
+}

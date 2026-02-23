@@ -1,0 +1,35 @@
+<nav class="navbar navbar-expand-md">
+  <div class="container-fluid d-flex justify-content-between"">
+    <a class="navbar-brand" href="/"
+      ><i class="fa-solid fa-earth-americas"></i
+    ></a>
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarNavAltMarkup"
+    >
+    <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="mainNavbar">
+
+      <!-- Left links -->
+      <div class="navbar-nav me-auto">
+        <a class="nav-link" href="/">Home</a>
+        <a class="nav-link" href="/listings">All Listings</a>
+        <a class="nav-link" href="/listings/new">Add Listing</a>
+      </div>
+
+      <!-- Right links -->
+      <div class="navbar-nav ms-auto">
+        <% if(!currentUser) {%>
+        <a class="nav-link" href="/signup">Sign up</a>
+        <a class="nav-link" href="/login">Login</a>
+        <% } else if(currentUser) {%>
+        <a class="nav-link" href="/logout">Logout</a>
+        <% } %>
+      </div>
+
+    </div>
+  </div>
+</nav>
