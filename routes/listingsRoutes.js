@@ -35,7 +35,7 @@ router.get(
   "/:id",
   wrapAsync(async (req, res) => {
     let Uid = req.params.id;
-    const listing = await Listing.findById(Uid).populate("reviews").populate("owner");
+    const listing = await Listing.findById(Uid).populate({path : "reviews" , populate : {path : "author"}}).populate("owner");
     if(!listing){
     req.flash("Failure" , "Listing not found");
     res.redirect("/listings");
@@ -96,7 +96,7 @@ router.delete(
   "/:id",IsLoggedIn,
   wrapAsync(async (req, res) => {
     let { id } = req.params;
-    await Listing.findByIdAndDelete(id);
+     await Listing.findByIdAndDelete(id);
     req.flash("success" , "Listing Deleted");
     res.redirect("/listings");
   }),

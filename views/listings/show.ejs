@@ -29,7 +29,7 @@
       </form>
     </div>
   </div>
-  
+  <% if (currentUser) { %>
     <div class="col-8 mt-4">
       <h4>
         Leave a Review
@@ -56,18 +56,18 @@
         <button class="btn mt-3">Submit</button>
         <hr>
       </form>
+    <% } %>
         <div class="all-reviews row">
           <h4>Reviews</h4>
           <div class="reviews row">
             <% for(review of listing.reviews){ %>
                <div class="person-review card col-5 m-2 p-2">
                 <form action="/"></form>
-<i class="fa-solid fa-trash"></i>
-                <p><b>John Doe</b></p>
+                <p><b><%=review.author.userInfo.firstName %></b></p>
                 <p><%=review.rating %>&nbsp;Star</p>
                 <p><%=review.comment %></p>
-                <form class="col-4" action="" method="post">
-                  <button class="btn btn-delete" >Delete</button>
+                <form class="col-4" action="/listings/<%= listing._id %>/reviews/<%= review._id %>?_method=delete" method="post">
+                  <button class="btn btn-delete" ><i class="fa-solid fa-trash"></i>Delete</button>
                 </form>
                </div>
             <% } %>
