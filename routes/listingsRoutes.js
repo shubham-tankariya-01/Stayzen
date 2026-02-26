@@ -3,8 +3,8 @@ const router = express.Router();
 const Listing = require("../Models/listing");
 const wrapAsync = require("../utils/wrapAsync.js");
 const ExpressError = require("../utils/xpressError.js");
-const { listingSchema} = require("../schema.js");
-const { IsLoggedIn } = require("../middleware.js");
+const { listingSchema } = require("../schema.js");
+const { IsLoggedIn, IsOwner } = require("../middleware.js");
 
 const validateListing = (req, res, next) => {
   let { error } = listingSchema.validate(req.body);
@@ -26,7 +26,7 @@ router.get(
 );
 
 //get a form for adding a new listing(Create route)
-router.get("/new",IsLoggedIn,(req, res) => {
+router.get("/new", IsLoggedIn, (req, res) => {
   res.render("listings/new.ejs");
 });
 
@@ -35,12 +35,12 @@ router.get(
   "/:id",
   wrapAsync(async (req, res) => {
     let Uid = req.params.id;
-    const listing = await Listing.findById(Uid).populate({path : "reviews" , populate : {path : "author"}}).populate("owner");
-    if(!listing){
-    req.flash("Failure" , "Listing not found");
-    res.redirect("/listings");
-    }else{
-    res.render("listings/show.ejs", { listing });
+    const listing = await Listing.findById(Uid).populate({ path: "reviews", populate: { path: "author" } }).populate("owner");
+    if (!listing) {
+      req.flash("error", "Listing not found");
+      res.redirect("/listings");
+    } else {
+      res.render("listings/show.ejs", { listing });
     }
   }),
 );
@@ -55,49 +55,46 @@ router.post(
     let NewListing = new Listing(req.body.listing);
     NewListing.owner = req.user._id;
     await NewListing.save();
-    req.flash("success" , "New listing Created");
+    req.flash("success", "New listing Created");
     res.redirect("/listings");
   }),
 );
 
 //Get a form for edit any listing(edit route)
 router.get(
-  "/:id/edit",IsLoggedIn,
+  "/:id/edit", IsLoggedIn, IsOwner,
   wrapAsync(async (req, res) => {
     let { id } = req.params;
     const listing = await Listing.findById(id);
-    if(!listing){
-    req.flash("Failure" , "Listing not found");
-    res.redirect("/listings");
-    }else{
-    res.render("listings/edit.ejs", { listing });
+    if (!listing) {
+      req.flash("Failure", "Listing not found");
+      res.redirect("/listings");
+    } else {
+      res.render("listings/edit.ejs", { listing });
     }
-    
+
   }),
 );
 
 //Request for save edited changes for listing
 router.put(
-  "/:id",IsLoggedIn,
+  "/:id", IsLoggedIn, IsOwner,
   validateListing,
   wrapAsync(async (req, res) => {
     let { id } = req.params;
-    let listing = await findById(id);
-    if(listing.owner._id === req.user._id){
-
-    }
-    req.flash("success" , "Listing Updated");
+    await Listing.findByIdAndUpdate(id, { ...req.body.listing });
+    req.flash("success", "Listing Updated");
     res.redirect(`/listings/${id}`);
   }),
 );
 
 //for deleting any listing
 router.delete(
-  "/:id",IsLoggedIn,
+  "/:id", IsLoggedIn, IsOwner,
   wrapAsync(async (req, res) => {
     let { id } = req.params;
-     await Listing.findByIdAndDelete(id);
-    req.flash("success" , "Listing Deleted");
+    await Listing.findByIdAndDelete(id);
+    req.flash("success", "Listing Deleted");
     res.redirect("/listings");
   }),
 );

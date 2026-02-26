@@ -1,16 +1,15 @@
 <% if (success.length && success) { %>
+  <div class="d-flex justify-content-center">
+    <div class="alert alert-success alert-dismissible fade show col-6">
+      <%=success%>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+  </div>
+  <% }if(error.length && error){%>
     <div class="d-flex justify-content-center">
-        <div class="alert alert-success alert-dismissible fade show col-6">
-          <%=success%>
+      <div class="alert alert-danger alert-dismissible fade show col-6">
+        <%=error%>
           <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-        </div>
+      </div>
     </div>
-<% }if(Failure.length && Failure){%>
-       <div class="d-flex justify-content-center">
-        <div class="alert alert-danger alert-dismissible fade show col-6">
-          <%=Failure%>
-          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-        </div>
-    </div>
-<% } %>
-
+    <% } %>
