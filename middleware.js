@@ -1,5 +1,5 @@
 const Listing = require("./Models/listing.js");
-const { findById } = require("./Models/review.js");
+const Review = require("./Models/review.js");
 
 module.exports.IsLoggedIn = (req, res, next) => {
 
