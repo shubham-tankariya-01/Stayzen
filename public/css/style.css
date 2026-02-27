@@ -1,227 +1,297 @@
 :root {
-  /* ===== Indigo Shades ===== */
-  --indigo-100: #e0cffc;
-  --indigo-200: #c29ffa;
-  --indigo-300: #a370f7;
-  --indigo-400: #8540f5;
-  --indigo-500: #6610f2; /* Primary Indigo */
-  --indigo-600: #520dc2;
-  --indigo-700: #3d0a91;
-  --indigo-800: #290661;
-  --indigo-900: #140330;
-  --light:white;
+  /* ===== Light Artisanal Purplish Tokens ===== */
+  --color-bg: #ffffff;
+  --color-surface: #ffffff;
+  --color-surface-soft: #f8fafc;
+  --color-border-light: #f1f5f9;
+  --color-border-hover: #e2e8f0;
 
-  /* ===== Semantic Mapping (Recommended) ===== */
-  --color-indigo-primary: var(--indigo-500);
-  --color-indigo-light: var(--indigo-100);
-  --color-indigo-dark: var(--indigo-900);
+  --color-text-main: #0f172a;
+  --color-text-muted: #64748b;
+  --color-text-dim: #94a3b8;
 
-  --color-indigo-hover: var(--indigo-600);
-  --color-indigo-soft-bg: #f3f0ff;
-}
-body{
-    padding: 0;
-    margin: 0;
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-}
-textarea{
-    resize: none;
-    height: 120px;
-}
-/* -----------------------------navbar------------------------------ */
+  /* ===== Signature Purplish (Indigo) Accents ===== */
+  --color-primary: #4f46e5;
+  /* Natural Indigo */
+  --color-primary-soft: rgba(79, 70, 229, 0.08);
+  --color-accent-lime: #84cc16;
+  /* Balanced Lime */
 
-.navbar{
-    height: 4.5rem;
-    background-color: var(--indigo-500);
-    font-family: "Varela Round";
-    /* box-shadow: 0px 0px 2px 1px var(--indigo-700); */
+  /* ===== Structural Persistence (High Radius) ===== */
+  --radius-xs: 8px;
+  --radius-sm: 12px;
+  --radius-md: 20px;
+  --radius-lg: 32px;
+  --radius-xl: 48px;
+
+  /* ===== Motion & Depth ===== */
+  --transition-premium: all 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
+  --glass-bg: rgba(255, 255, 255, 0.85);
+  /* Slightly less transparent */
+  --glass-blur: blur(20px);
+  --shadow-premium: 0 20px 50px rgba(0, 0, 0, 0.08);
 }
 
-.fa-earth-americas{
-    color: var(--light);
-    font-size: 2rem;
+body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--color-bg);
+  color: var(--color-text-main);
+  font-family: 'Inter', sans-serif;
+  letter-spacing: -0.01em;
+  -webkit-font-smoothing: antialiased;
 }
 
-.nav-link{
-    color: var(--light);
-    font-size: 1.1rem;
-    font-weight: 500;
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  color: var(--color-text-main);
 }
 
-/* ----------------------------footer-------------------------------- */
-.f-info{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    background-color: var(--indigo-500);
-    color: var(--light);
-    padding: 10PX 10PX;
-}
-.f-info-div{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 10px;
-    width: 100% ;
-}
+/* ----------------------------- Global Layout ------------------------------ */
 
-.f-info-socials i{
-    font-size: 1.4rem;
-    margin-right: 5px ;
-}
-.f-info-links a {
-    text-decoration: none;
-    color: var(--light);
-    margin-right: 5px ;
-}
-.f-info-links a:hover{
-    text-decoration: underline;
-}
-
-/* -----------------------------------------------cards---------------------------------- */
-
-.content-section {
-  padding: 0 1rem;   /* mobile first */
-  flex: 1;
-
-}
-
-/* ≥576px (small devices) */
-@media (min-width: 576px) {
-  .content-section {
-    padding: 0 2rem;
-  }
-}
-
-/* ≥768px (tablets) */
-@media (min-width: 768px) {
-  .content-section {
-    padding: 0 3rem;
-  }
-}
-
-/* ≥992px (desktops) */
-@media (min-width: 992px) {
-  .content-section {
-    padding: 0 5.5rem;
-  }
-}
-.listing-grid a{
-    text-decoration: none;
-    color: #000;
-}
-
-.listing-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
-  gap: 1rem;
-}
-
-/* Card */
-.listing-card {
+.main-wrapper {
   display: flex;
   flex-direction: column;
-  cursor: pointer;
+  min-height: 100vh;
 }
 
-/* Square image */
-.listing-image {
+.container-artisanal {
   width: 100%;
-  aspect-ratio: 1 / 1;
-  object-fit: cover;
-  border-radius: 12px;
-  max-width: 200px;
-}
-.listing-card:hover .listing-image{
-    background-color: #ffffff;
-    opacity: 0.7;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 2rem;
 }
 
-/* Text area */
-.listing-details {
-  padding: 0.5rem 0rem 0 0.1rem;
-  font-family: "Nunito";
+/* Explore / home page: very thin side padding for the card grid */
+.container-artisanal.explore-page-layout {
+  max-width: 100%;
+  padding: 0 1rem;
+  /* ≈16px on each side — just enough to not touch edges */
 }
-.listing-details h4{
-    font-size: 0.9rem;
-    font-weight: 700 !important;
+
+
+/* ----------------------------- Floating Glass Navbar (Dribbble 2.0) ------------------------------ */
+
+.navbar-floating-container {
+  position: fixed;
+  top: 1.5rem;
+  left: 0;
+  right: 0;
+  z-index: 1100;
+  display: flex;
+  justify-content: center;
+  pointer-events: none;
 }
-/* Title */
-.listing-title {
+
+.navbar-pill {
+  pointer-events: auto;
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  border-radius: 100px;
+  padding: 0.6rem 0.8rem;
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08);
+  max-width: 95%;
+  transition: var(--transition-premium);
+}
+
+.nav-brand-pill {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 0.6rem 1.4rem;
+  background: var(--color-text-main);
+  border-radius: 50px;
+  text-decoration: none;
+  color: white;
+  font-weight: 900;
+  font-size: 1rem;
+  letter-spacing: -0.5px;
+}
+
+.nav-brand-pill i {
+  color: var(--color-accent-lime);
+  font-size: 1.1rem;
+}
+
+.nav-links-pill {
+  display: flex;
+  gap: 0.4rem;
+  align-items: center;
+}
+
+.pill-link-item {
+  text-decoration: none;
   font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--color-text-muted);
+  padding: 0.7rem 1.5rem;
+  border-radius: 50px;
+  transition: var(--transition-premium);
+}
+
+.pill-link-item:hover {
+  color: var(--color-primary);
+  background: var(--color-primary-soft);
+}
+
+/* Specific Active Link Colors */
+.pill-link-item.active-explore {
+  color: var(--color-primary);
+  background: var(--color-primary-soft);
+  box-shadow: inset 0 0 0 1px rgba(79, 70, 229, 0.1);
+}
+
+.pill-link-item.active-host {
+  color: var(--color-accent-lime);
+  background: rgba(132, 204, 22, 0.1);
+}
+
+.nav-user-pill {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 0.5rem 0.6rem 0.5rem 1.4rem;
+  background: white;
+  border-radius: 50px;
+  text-decoration: none;
+  color: var(--color-text-main);
+  font-weight: 800;
+  font-size: 0.9rem;
+  border: 1px solid var(--color-border-light);
+  transition: var(--transition-premium);
+}
+
+.nav-user-pill:hover {
+  border-color: var(--color-primary);
+  transform: translateY(-1px);
+}
+
+.user-avatar-pill {
+  width: 36px;
+  height: 36px;
+  background: var(--color-primary);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 900;
+  font-size: 0.85rem;
+  color: white;
+}
+
+/* ----------------------------- Content Area Padding ------------------------------ */
+
+.content-section {
+  padding-top: 8rem !important;
+  /* Reduced slightly */
+}
+
+/* ----------------------------- Premium Footer ------------------------------ */
+
+.footer-artisanal {
+  padding: 4rem 0 3rem;
+  border-top: 1.5px solid #f1f5f9;
+  margin-top: auto;
+  background: white;
+}
+
+.footer-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+}
+
+/* Logo */
+.footer-logo-link {
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.footer-logo-icon {
+  width: 36px;
+  height: 36px;
+  background: var(--color-text-main);
+  border-radius: 10px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  color: var(--color-accent-lime);
+}
+
+.footer-logo-text {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-weight: 900;
+  font-size: 1.3rem;
+  letter-spacing: -0.5px;
+  color: var(--color-text-main);
+}
+
+/* Nav links row */
+.footer-nav {
+  display: flex;
+  gap: 2rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.footer-link {
+  text-decoration: none;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--color-text-muted);
+  transition: color 0.2s ease;
+  letter-spacing: 0.2px;
+}
+
+.footer-link:hover {
+  color: var(--color-primary);
+}
+
+/* Copyright */
+.footer-copy {
+  font-size: 0.78rem;
+  color: #c1cad4;
   font-weight: 600;
   margin: 0;
-  line-height: 1.2;
+  letter-spacing: 0.2px;
 }
 
-/* Price */
-.listing-price {
-  font-size: 0.85rem;
-  margin: 0.2rem 0 0;
+
+/* ------------------------------- Artisanal Buttons ------------------------------------- */
+
+.btn-premium {
+  background: var(--color-primary);
+  color: white;
+  border: none;
+  padding: 1.25rem 3.5rem;
+  border-radius: var(--radius-md);
+  font-weight: 800;
+  font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  transition: var(--transition-premium);
+  cursor: pointer;
+  box-shadow: 0 10px 30px rgba(79, 70, 229, 0.2);
 }
 
-/* -------------------------new-form----------------------------- */
-
-.new-form{
-    border: 2px solid var(--indigo-400);
-    padding: 20px 30px;
-    border-radius: 20px;
-    box-shadow: 0 0 3px 1px rgba(0, 0, 0, 0.215);
-}
-.new-form h3{
-   font-family: "nunito";
-   font-weight: 700;
-   font-size: 2.2rem;
-   margin-bottom: 15px;
-}
-.mb-3 label{
-    font-size: 1.2rem;
-    font-weight: 400;
-    font-family: "Nunito";
-    margin-bottom: 3px;
-}
-.btn{
-    background-color: var(--light);
-    color: var(--indigo-600);
-    border: 2px solid var(--indigo-400);
-    padding: 5px 10px;
-    font-size: 1.1rem;
-    font-weight: 700;
-    transition: 0.1s ease-in;
-
-}
-.btn:hover{
-    background-color: var(--indigo-700);
-    transform: scale(1.05);
-    color: white;
-}
-
-/* -------------------------------------show-page----------------------------------------------------- */
-.show-img{
-  height: 40vh;
-  width: 100%;
-  object-fit: cover;
-}
-.btns{
-  flex-wrap: wrap;
-}
-.btn-show{
-  width: 15%;
-  height: fit-content;
-  margin: 10px 10px 20px 10px ;
-}
-.btn-delete{
-  width: 100%;
-  border: 2px solid rgb(255, 19, 11);
-  color: rgb(255, 19, 11);
-}
-.btn-delete:hover{
-  color: var(--light);
-  background-color: rgb(255, 19, 11);
-}
-.card-text {
-  margin-bottom: 0.5rem;
+.btn-premium:hover {
+  background: #4338ca;
+  transform: translateY(-3px);
+  box-shadow: 0 20px 40px rgba(79, 70, 229, 0.3);
 }

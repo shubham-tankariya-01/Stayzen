@@ -1,39 +1,30 @@
-<%-layout("/layouts/boilerplate.ejs") %>
-<div class="container">
-  <div class="row justify-content-center">
-    <div class="col-lg-6 col-md-8 col-sm-10 new-form">
-      <h3>Login in Stayzen</h3>
+<% layout("/layouts/boilerplate.ejs") %>
 
-      <form
-        method="post"
-        class="needs-validation"
-        action="/login"
-        novalidate
-      >
-        <div class="mb-3">
-          <label for="username" class="form-label">Username</label>
-          <input
-            class="form-control"
-            type="text"
-            name="username"
-            id="username"
-            required
-          />
-          <div class="invalid-feedback">Please enter username</div>
+  <div class="artisanal-form-hero">
+    <div class="master-form-card">
+      <div class="form-header-main">
+        <h2>Welcome back</h2>
+        <p>Enter your details to continue your journey</p>
+      </div>
+
+      <form action="/login" method="POST" class="needs-validation" novalidate>
+        <div class="artisanal-field-group">
+          <label for="username" class="field-label-artisanal">Username</label>
+          <input type="text" name="username" id="username" class="field-control-artisanal" placeholder="Your identifier"
+            required>
         </div>
 
-        <div class="mb-3">
-           <label for="password">Password</label>
-           <input 
-           type="password"
-           class="form-control"
-           name="password"
-           id="password"
-           required
-           >
+        <div class="artisanal-field-group" style="margin-bottom: 2rem;">
+          <label for="password" class="field-label-artisanal">Password</label>
+          <input type="password" name="password" id="password" class="field-control-artisanal" placeholder="••••••••"
+            required>
         </div>
-        <button class="btn ">Login</button>
+
+        <button type="submit" class="form-submit-btn full-width">Sign in</button>
       </form>
+
+      <div class="form-footer-secondary">
+        Don't have an account? <a href="/signup">Join Stayzen</a>
+      </div>
     </div>
   </div>
-</div>

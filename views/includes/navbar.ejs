@@ -1,35 +1,48 @@
-<nav class="navbar navbar-expand-md">
-  <div class="container-fluid d-flex justify-content-between"">
-    <a class="navbar-brand" href="/"
-      ><i class="fa-solid fa-earth-americas"></i
-    ></a>
-    <button
-      class="navbar-toggler"
-      type="button"
-      data-bs-toggle="collapse"
-      data-bs-target="#navbarNavAltMarkup"
-    >
-    <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="mainNavbar">
+<div class="navbar-floating-container">
+  <div class="navbar-pill">
+    <!-- Branding Pill -->
+    <a href="/" class="nav-brand-pill">
+      <i class="fa-solid fa-cube"></i>
+      <span>Stayzen</span>
+    </a>
 
-      <!-- Left links -->
-      <div class="navbar-nav me-auto">
-        <a class="nav-link" href="/">Home</a>
-        <a class="nav-link" href="/listings">All Listings</a>
-        <a class="nav-link" href="/listings/new">Add Listing</a>
-      </div>
-
-      <!-- Right links -->
-      <div class="navbar-nav ms-auto">
-        <% if(!currentUser) {%>
-        <a class="nav-link" href="/signup">Sign up</a>
-        <a class="nav-link" href="/login">Login</a>
-        <% } else if(currentUser) {%>
-        <a class="nav-link" href="/logout">Logout</a>
+    <!-- Links Pill -->
+    <div class="nav-links-pill">
+      <a href="/listings" class="pill-link-item active-explore">Explore</a>
+      <a href="/listings/new" class="pill-link-item active-host">Host</a>
+      <% if(!currentUser) { %>
+        <a href="/login" class="pill-link-item">Login</a>
         <% } %>
-      </div>
-
     </div>
+
+    <!-- User/Action Pill -->
+    <% if(!currentUser) { %>
+      <a href="/signup" class="nav-user-pill" style="background: var(--color-primary); color: white; border: none;">
+        <span>Join Now</span>
+        <div class="user-avatar-pill" style="background: white; color: var(--color-primary);">
+          <i class="fa-solid fa-arrow-right"></i>
+        </div>
+      </a>
+      <% } else { %>
+        <div class="dropdown">
+          <a href="#" class="nav-user-pill dropdown-toggle border-0" data-bs-toggle="dropdown">
+            <span>Profile</span>
+            <div class="user-avatar-pill">
+              <%= currentUser.username[0].toUpperCase() %>
+            </div>
+          </a>
+          <ul class="dropdown-menu dropdown-menu-end border-0 shadow-lg mt-4 py-3 px-2"
+            style="background: white; border-radius: 24px; min-width: 220px; border: 1px solid #f1f5f9;">
+            <li>
+              <h6 class="dropdown-header text-muted x-small text-uppercase mb-2 letter-spacing-1">Account</h6>
+            </li>
+            <li><a class="dropdown-item py-2 px-3 fw-bold rounded-4 mb-1" href="/listings/new">Host with us</a></li>
+            <li>
+              <hr class="dropdown-divider opacity-10">
+            </li>
+            <li><a class="dropdown-item py-2 px-3 fw-bold text-danger rounded-4" href="/logout">Logout</a></li>
+          </ul>
+        </div>
+        <% } %>
   </div>
-</nav>
+</div>

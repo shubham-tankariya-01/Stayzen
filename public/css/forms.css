@@ -1,0 +1,173 @@
+/* ==========================================================================
+   Light Artisanal Form Mastery — Clean & Wide (forms.css)
+   ========================================================================== */
+
+.artisanal-form-hero {
+    min-height: 85vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 6rem 1rem;
+}
+
+/* ---- Wider, cleaner card ---- */
+.master-form-card {
+    width: 100%;
+    max-width: 620px;
+    /* was 460px — significantly wider */
+    background: white;
+    padding: 3rem 3.5rem;
+    border: 1.5px solid #edf0f4;
+    border-radius: var(--radius-xl);
+    box-shadow:
+        0 4px 16px rgba(15, 23, 42, 0.04),
+        0 24px 60px rgba(15, 23, 42, 0.06);
+}
+
+/* Host form even wider */
+.host-form-card {
+    max-width: 780px;
+}
+
+/* ---- Header ---- */
+.form-header-main {
+    margin-bottom: 2.5rem;
+    text-align: left;
+    /* left-aligned feels more professional */
+    padding-bottom: 2rem;
+    border-bottom: 1.5px solid #f1f5f9;
+}
+
+.form-header-main h2 {
+    font-size: 2rem;
+    font-weight: 900;
+    margin-bottom: 0.4rem;
+    letter-spacing: -1px;
+    color: var(--color-text-main);
+}
+
+.form-header-main p {
+    color: var(--color-text-muted);
+    font-size: 0.95rem;
+    font-weight: 600;
+    margin: 0;
+}
+
+/* ---- Field groups ---- */
+.artisanal-field-group {
+    margin-bottom: 1.25rem;
+}
+
+.field-label-artisanal {
+    display: block;
+    font-size: 0.72rem;
+    font-weight: 900;
+    color: var(--color-text-dim);
+    margin-bottom: 8px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+}
+
+.field-control-artisanal {
+    width: 100%;
+    padding: 0.95rem 1.2rem;
+    background: #f8fafc;
+    border: 1.5px solid #edf0f4;
+    border-radius: var(--radius-md);
+    color: var(--color-text-main);
+    font-family: 'Inter', sans-serif;
+    font-size: 0.95rem;
+    transition: border-color 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
+}
+
+.field-control-artisanal:focus {
+    background: white;
+    border-color: var(--color-primary);
+    outline: none;
+    box-shadow: 0 0 0 4px rgba(79, 70, 229, 0.08);
+}
+
+.field-control-artisanal::placeholder {
+    color: #c1cad4;
+}
+
+/* Shared row for two fields */
+.field-row-split {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.25rem;
+    margin-bottom: 1.25rem;
+}
+
+/* ---- Submit button — smaller, cleaner ---- */
+.form-submit-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--color-primary);
+    color: white;
+    border: none;
+    padding: 0.85rem 2.5rem;
+    border-radius: var(--radius-md);
+    font-weight: 800;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: background 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
+    cursor: pointer;
+    box-shadow: 0 6px 20px rgba(79, 70, 229, 0.18);
+    text-decoration: none;
+}
+
+.form-submit-btn:hover {
+    background: #4338ca;
+    transform: translateY(-2px);
+    box-shadow: 0 12px 28px rgba(79, 70, 229, 0.25);
+    color: white;
+}
+
+.form-submit-btn.full-width {
+    width: 100%;
+}
+
+/* Cancel/secondary button */
+.form-cancel-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: white;
+    color: var(--color-text-muted);
+    border: 1.5px solid #e2e8f0;
+    padding: 0.85rem 2rem;
+    border-radius: var(--radius-md);
+    font-weight: 700;
+    font-size: 0.9rem;
+    transition: border-color 0.25s ease, background 0.25s ease;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.form-cancel-btn:hover {
+    border-color: #cbd5e1;
+    background: #f8fafc;
+    color: var(--color-text-main);
+}
+
+/* ---- Footer link ---- */
+.form-footer-secondary {
+    text-align: center;
+    margin-top: 2.5rem;
+    font-size: 0.9rem;
+    color: var(--color-text-muted);
+    font-weight: 600;
+}
+
+.form-footer-secondary a {
+    color: var(--color-primary);
+    text-decoration: none;
+    font-weight: 800;
+}
+
+.form-footer-secondary a:hover {
+    text-decoration: underline;
+}

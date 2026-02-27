@@ -1,15 +1,27 @@
-<% if (success.length && success) { %>
-  <div class="d-flex justify-content-center">
-    <div class="alert alert-success alert-dismissible fade show col-6">
-      <%=success%>
-        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+<% if (success && success.length) { %>
+  <div class="navbar-floating-container" style="top: 7rem; z-index: 2000; pointer-events: none;">
+    <div class="alert alert-success border-0 p-3 d-flex align-items-center shadow-lg" role="alert"
+      style="border-radius: 50px; background: white; border: 1.5px solid #84cc16; color: #166534; min-width: 380px; pointer-events: auto;">
+      <i class="fa-solid fa-circle-check ms-2 me-3 fs-5" style="color: #84cc16;"></i>
+      <div class="flex-grow-1 small fw-800 text-uppercase letter-spacing-1">
+        <%= success %>
+      </div>
+      <button type="button" class="btn-close shadow-none me-2" data-bs-dismiss="alert" aria-label="Close"
+        style="font-size: 0.65rem;"></button>
     </div>
   </div>
-  <% }if(error.length && error){%>
-    <div class="d-flex justify-content-center">
-      <div class="alert alert-danger alert-dismissible fade show col-6">
-        <%=error%>
-          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  <% } %>
+
+    <% if (error && error.length) { %>
+      <div class="navbar-floating-container" style="top: 7rem; z-index: 2000; pointer-events: none;">
+        <div class="alert alert-danger border-0 p-3 d-flex align-items-center shadow-lg" role="alert"
+          style="border-radius: 50px; background: white; border: 1.5px solid #ef4444; color: #991b1b; min-width: 380px; pointer-events: auto;">
+          <i class="fa-solid fa-circle-exclamation ms-2 me-3 fs-5" style="color: #ef4444;"></i>
+          <div class="flex-grow-1 small fw-800 text-uppercase letter-spacing-1" style="line-height: 1.4;">
+            <%= error %>
+          </div>
+          <button type="button" class="btn-close shadow-none me-2" data-bs-dismiss="alert" aria-label="Close"
+            style="font-size: 0.65rem;"></button>
+        </div>
       </div>
-    </div>
-    <% } %>
+      <% } %>

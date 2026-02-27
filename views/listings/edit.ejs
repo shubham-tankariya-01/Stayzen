@@ -1,91 +1,51 @@
-<%-layout("/layouts/boilerplate.ejs") %>
-<div class="container">
-  <div class="row justify-content-center">
-    <div class="col-lg-8 col-md-10 col-sm-12 new-form">
-      <h3>Edit your Listing</h3>
-      <form
-        action="/listings/<%= listing._id %>?_method=PUT"
-        class="needs-validation"
-        method="POST"
-        novalidate
-      >
-        <div class="mb-3">
-          <label for="title" class="form-label">Title</label>
-          <input
-            class="form-control"
-            type="text"
-            name="listing[title]"
-            id="title"
-            value="<%= listing.title %>"
-            required
-          />
-          <div class="valid-feedback">Title looks good !</div>
-          <div class="invalid-feedback">Please Enter a Title</div>
-        </div>
-        <div class="mb-3">
-          <label for="description" class="form-label">Description</label>
-          <textarea
-            name="listing[description]"
-            class="form-control"
-            id="description"
-            required
-          >
-<%= listing.description%></textarea
-          >
-          <div class="invalid-feedback">Please enter a short description</div>
-        </div>
-        <div class="mb-3">
-          <label for="image" class="form-label">Image Link</label>
-          <input
-            class="form-control"
-            type="text"
-            name="listing[image][url]"
-            id="image"
-            value="<%= listing.image.url %>"
-            required
-          />
+<% layout("/layouts/boilerplate.ejs") %>
+
+  <div class="artisanal-form-hero">
+    <div class="master-form-card" style="max-width: 680px;">
+      <div class="form-header-main">
+        <h2>Refine your space</h2>
+        <p>Update the details of your artisanal listing</p>
+      </div>
+
+      <form action="/listings/<%= listing._id %>?_method=put" method="post" class="needs-validation" novalidate>
+        <div class="artisanal-field-group">
+          <label for="title" class="field-label-artisanal">Property Name</label>
+          <input type="text" name="listing[title]" id="title" class="field-control-artisanal"
+            value="<%= listing.title %>" required>
         </div>
 
-        <div class="row">
-          <div class="mb-3 col-md-4">
-            <label for="price" class="form-label">Price</label>
-            <input
-              id="price"
-              type="number"
-              class="form-control"
-              name="listing[price]"
-              value="<%= listing.price %>"
-              required
-            />
-            <div class="invalid-feedback">Enter valid price!</div>
-          </div>
+        <div class="artisanal-field-group">
+          <label for="description" class="field-label-artisanal">The Story</label>
+          <textarea name="listing[description]" id="description" class="field-control-artisanal" rows="4"
+            required><%= listing.description %></textarea>
+        </div>
 
-          <div class="mb-3 col-md-8">
-            <label for="country" class="form-label">Country</label>
-            <input
-              type="text"
-              id="country"
-              name="listing[country]"
-              class="form-control"
-              value="<%= listing.location %>"
-              required
-            />
-            <div class="invalid-feedback">Country name should be valid</div>
+        <div class="artisanal-field-group">
+          <label for="image" class="field-label-artisanal">Update Image URL</label>
+          <input type="text" name="listing[image]" id="image" class="field-control-artisanal"
+            value="<%= listing.image.url %>" required>
+        </div>
+
+        <div class="field-row-split mb-3">
+          <div class="artisanal-field-group">
+            <label for="price" class="field-label-artisanal">Nightly Price</label>
+            <input type="number" name="listing[price]" id="price" class="field-control-artisanal"
+              value="<%= listing.price %>" required>
+          </div>
+          <div class="artisanal-field-group">
+            <label for="country" class="field-label-artisanal">Country</label>
+            <input type="text" name="listing[country]" id="country" class="field-control-artisanal"
+              value="<%= listing.country %>" required>
           </div>
         </div>
-        <div class="mb-3">
-          <label for="location" class="form-label">Location</label>
-          <input
-            type="text"
-            name="listing[location]"
-            class="form-control"
-            value="<%= listing.country %>"
-            required
-          />
-          <div class="invalid-feedback">Location should be valid</div>
+
+        <div class="artisanal-field-group">
+          <label for="location" class="field-label-artisanal">Specific Location</label>
+          <input type="text" name="listing[location]" id="location" class="field-control-artisanal"
+            value="<%= listing.location %>" required>
         </div>
-        <button class="btn">Edit</button>
+
+        <button class="btn-premium w-100 mt-3">Save Changes</button>
       </form>
     </div>
   </div>
-</div>

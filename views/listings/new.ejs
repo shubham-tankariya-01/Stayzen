@@ -1,106 +1,62 @@
-<%-layout("/layouts/boilerplate.ejs") %>
-<div class="container">
-  <div class="row justify-content-center">
-    <div class="col-lg-8 col-md-10 col-sm-12 new-form">
+<% layout("/layouts/boilerplate.ejs") %>
 
-      <h3>Create a New Listing</h3>
+  <div class="artisanal-form-hero">
+    <div class="master-form-card host-form-card">
+      <div class="form-header-main">
+        <h2>Become a Host</h2>
+        <p>Share your artisanal space with the world</p>
+      </div>
 
-      <form method="POST" class="needs-validation" action="/listings" novalidate>
+      <form action="/listings" method="POST" class="needs-validation" novalidate>
 
-        <div class="mb-3">
-          <label for="title" class="form-label">Title</label>
-          <input
-            class="form-control"
-            type="text"
-            name="listing[title]"
-            placeholder="Enter a catchy Title"
-            id="title"
-            required
-          />
-          <div class="valid-feedback">
-            Title looks good !
+        <!-- Property Name — full width -->
+        <div class="artisanal-field-group">
+          <label for="title" class="field-label-artisanal">Property Name</label>
+          <input type="text" name="listing[title]" id="title" class="field-control-artisanal"
+            placeholder="e.g. Minimalist Forest Cabin" required>
+        </div>
+
+        <!-- Story — full width -->
+        <div class="artisanal-field-group">
+          <label for="description" class="field-label-artisanal">The Story</label>
+          <textarea name="listing[description]" id="description" class="field-control-artisanal" rows="3"
+            placeholder="Describe the atmosphere and unique details..." required></textarea>
+        </div>
+
+        <!-- Cover Image — full width -->
+        <div class="artisanal-field-group">
+          <label for="image" class="field-label-artisanal">Cover Image URL</label>
+          <input type="text" name="listing[image]" id="image" class="field-control-artisanal"
+            placeholder="https://unsplash.com/photos/...">
+        </div>
+
+        <!-- Price + Country — share one row -->
+        <div class="field-row-split">
+          <div class="artisanal-field-group">
+            <label for="price" class="field-label-artisanal">Nightly Price (₹)</label>
+            <input type="number" name="listing[price]" id="price" class="field-control-artisanal"
+              placeholder="e.g. 4500" required>
           </div>
-           <div class="invalid-feedback">
-            Please Enter a Title
+          <div class="artisanal-field-group">
+            <label for="country" class="field-label-artisanal">Country</label>
+            <input type="text" name="listing[country]" id="country" class="field-control-artisanal"
+              placeholder="e.g. India" required>
           </div>
         </div>
 
-        <div class="mb-3">
-          <label for="description" class="form-label">Description</label>
-          <textarea
-            name="listing[description]"
-            class="form-control"
-            id="description"
-            rows="4"
-            required
-          ></textarea>
-           <div class="invalid-feedback">
-            Please enter a short description
-          </div>
+        <!-- Specific Location — full width -->
+        <div class="artisanal-field-group" style="margin-bottom: 2.5rem;">
+          <label for="location" class="field-label-artisanal">Specific Location</label>
+          <input type="text" name="listing[location]" id="location" class="field-control-artisanal"
+            placeholder="e.g. Manali, Himachal Pradesh" required>
         </div>
 
-        <div class="mb-3">
-          <label for="image" class="form-label">Image Link</label>
-          <input
-            class="form-control"
-            type="text"
-            name="listing[image][url]"
-            placeholder="Enter Image URL/LINK here..."
-            id="image"
-            required
-          />
-         
+        <!-- Publish + Cancel — share one row -->
+        <div class="field-row-split" style="margin-bottom:0;">
+          <button type="submit" class="form-submit-btn full-width">Publish Listing</button>
+          <a href="/listings" class="form-cancel-btn full-width">Cancel</a>
         </div>
-
-        <div class="row">
-          <div class="mb-3 col-md-4">
-            <label for="price" class="form-label">Price</label>
-            <input
-              id="price"
-           
-              class="form-control"
-              name="listing[price]"
-              placeholder="Enter Price"
-              required
-            />
-          <div class="invalid-feedback">
-            Enter valid price!
-          </div>
-          </div>
-
-          <div class="mb-3 col-md-8">
-            <label for="country" class="form-label">Country</label>
-            <input
-              type="text"
-              id="country"
-              name="listing[country]"
-              class="form-control"
-              placeholder="Country"
-              required
-            />
-          <div class="invalid-feedback">
-            Country name should be valid
-          </div>
-          </div>
-        </div>
-
-        <div class="mb-3">
-          <label for="location" class="form-label">Location</label>
-          <input
-            type="text"
-            name="listing[location]"
-            class="form-control"
-            placeholder="Location"
-            required
-          />
-          <div class="invalid-feedback">
-            Location should be valid
-          </div>
-        </div>
-
-        <button class="btn">ADD</button>
 
       </form>
     </div>
   </div>
-</div>

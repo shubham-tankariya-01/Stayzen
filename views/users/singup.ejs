@@ -1,83 +1,60 @@
-<%-layout("/layouts/boilerplate.ejs") %>
-<div class="container">
-  <div class="row justify-content-center">
-    <div class="col-lg-6 col-md-8 col-sm-10 new-form">
-      <h3>SignUp in Stayzen</h3>
+<% layout("/layouts/boilerplate.ejs") %>
 
-      <form method="POST" class="needs-validation" action="/signup" novalidate>
-        <div class="d-flex userInfo justify-content-between">
-          <div class="mb-3 me-2 col-6">
-            <label for="firstname" class="form-label">First Name</label>
-            <input
-              class="form-control"
-              type="text"
-              name="userInfo[firstName]"
-              id="firstname"
-              required
-            />
-            <div class="invalid-feedback">Please enter Fist Name</div>
+  <div class="artisanal-form-hero">
+    <div class="master-form-card">
+      <div class="form-header-main">
+        <h2>Join Stayzen</h2>
+        <p>Begin your artisanal journey today</p>
+      </div>
+
+      <form action="/signup" method="post" class="needs-validation" novalidate>
+
+        <!-- First Name + Last Name in one row -->
+        <div class="field-row-split">
+          <div class="artisanal-field-group">
+            <label for="firstName" class="field-label-artisanal">First Name</label>
+            <input type="text" id="firstName" name="userInfo[firstName]" class="field-control-artisanal"
+              placeholder="e.g. Jane" required />
           </div>
-  
-          <div class="mb-3 me-2 col-6">
-            <label for="lastname" class="form-label">Last Name</label>
-            <input
-              class="form-control"
-              type="text"
-              name="userInfo[lastName]"
-              id="lastname"
-              required
-            />
-            <div class="invalid-feedback">Please enter Last Name</div>
+          <div class="artisanal-field-group">
+            <label for="lastName" class="field-label-artisanal">Last Name</label>
+            <input type="text" id="lastName" name="userInfo[lastName]" class="field-control-artisanal"
+              placeholder="e.g. Doe" required />
           </div>
         </div>
 
-        <div class="mb-3">
-          <label for="dob" class="form-label">Date of Birth </label>
-          <input
-            class="form-control"
-            type="date"
-            name="userInfo[dateOfBirth]"
-            id="dob"
-            required
-          />
-          <div class="invalid-feedback">Please enter Date Of Birth</div>
+        <!-- Username + DOB in one row -->
+        <div class="field-row-split">
+          <div class="artisanal-field-group">
+            <label for="username" class="field-label-artisanal">Username</label>
+            <input type="text" id="username" name="username" class="field-control-artisanal" placeholder="StayzenMaster"
+              required />
+          </div>
+          <div class="artisanal-field-group">
+            <label for="dateOfBirth" class="field-label-artisanal">Date of Birth</label>
+            <input type="date" id="dateOfBirth" name="userInfo[dateOfBirth]" class="field-control-artisanal" required />
+          </div>
         </div>
 
-        <div class="mb-3">
-          <label for="username" class="form-label">Username</label>
-          <input
-            class="form-control"
-            type="text"
-            name="username"
-            id="username"
-            required
-          />
-          <div class="invalid-feedback">Please enter username</div>
+        <!-- Email — full width -->
+        <div class="artisanal-field-group">
+          <label for="email" class="field-label-artisanal">Email</label>
+          <input type="email" id="email" name="email" class="field-control-artisanal" placeholder="artisan@stayzen.com"
+            required />
         </div>
 
-        <div class="mb-3">
-          <label for="email" class="form-label">Email</label>
-          <input
-            class="form-control"
-            type="email"
-            name="email"
-            id="email"
-            required
-          />
-          <div class="valid-feedback">Please enter email</div>
+        <!-- Password — full width -->
+        <div class="artisanal-field-group" style="margin-bottom: 2rem;">
+          <label for="password" class="field-label-artisanal">Password</label>
+          <input type="password" id="password" name="password" class="field-control-artisanal" placeholder="••••••••"
+            required />
         </div>
-        <div class="mb-3">
-          <label for="password">Password</label>
-          <input
-            type="password"
-            class="form-control"
-            name="password"
-            id="password"
-            required
-          />
-        </div>
-        <button class="btn btn-success">SignUp</button>
+
+        <button type="submit" class="form-submit-btn full-width">Create Account</button>
       </form>
+
+      <div class="form-footer-secondary">
+        Already a member? <a href="/login">Sign in</a>
+      </div>
     </div>
   </div>
-</div>

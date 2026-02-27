@@ -6,8 +6,8 @@ module.exports.renderSignupForm = (req, res) => {
 
 module.exports.signup = async (req, res) => {
     try {
-        let { username, email, password, ...userInfo } = req.body;
-        let newUser = new User({ username, email, ...userInfo });
+        let { username, email, password, userInfo } = req.body;
+        let newUser = new User({ username, email, userInfo });
         const registeredUser = await User.register(newUser, password);
         req.login(registeredUser, (err) => {
             if (err) {

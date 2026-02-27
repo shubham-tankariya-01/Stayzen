@@ -38,14 +38,14 @@ async function main() {
   await mongoose.connect(MONGO_URL);
 }
 
-const sessionOptions= {
-  secret : "secretcodeforsession",
-  resave : false,
-  savaUninitialized : true,
-  cookie : {
-    expires : Date.now() + 7*24*60*60*1000,
-    maxAge :  7*24*60*60*1000,
-    httpOnly : true,
+const sessionOptions = {
+  secret: "secretcodeforsession",
+  resave: false,
+  saveUninitialized: true,
+  cookie: {
+    expires: Date.now() + 7 * 24 * 60 * 60 * 1000,
+    maxAge: 7 * 24 * 60 * 60 * 1000,
+    httpOnly: true,
   }
 }
 // root
@@ -64,7 +64,7 @@ passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
 
-app.use((req,res,next)=>{
+app.use((req, res, next) => {
   res.locals.success = req.flash("success");
   res.locals.error = req.flash("error");
   res.locals.currentUser = req.user;
@@ -74,8 +74,8 @@ app.use((req,res,next)=>{
 
 //routes
 app.use("/listings", listingsRouter);
-app.use("/listings/:id/reviews",reviewsRouter);
-app.use("/",userRouter);
+app.use("/listings/:id/reviews", reviewsRouter);
+app.use("/", userRouter);
 
 
 app.use((err, req, res, next) => {

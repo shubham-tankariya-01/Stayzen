@@ -1,24 +1,31 @@
 <% layout("/layouts/boilerplate.ejs") %>
 
+  <div class="explore-header mb-5">
+    <h1 class="display-5 fw-900 mb-1">Explore the <span style="color: var(--color-primary);">unseen</span></h1>
+    <p class="text-muted ">Premium artisanal stays curated for the bold.</p>
+  </div>
 
-<h3 >All listings</h3>
-
-  <div class="listing-grid">
+  <div class="listing-grid-artisanal">
     <% for (let listing of allListings) { %>
-    <a href="/listings/<%=listing._id %>">
-      <div class="listing-card">
-        <img 
-          src="<%= listing.image.url %>" 
-          alt="Listing image"
-          class="listing-image"
-        >
-        <div class="listing-details">
-          <h4 class="listing-title"><%= listing.title %></h4>
-          <p class="listing-price">
-            &#8377; <%= listing.price.toLocaleString("en-IN") %> / night
-          </p>
+      <a href="/listings/<%=listing._id %>" class="card-artisanal">
+        <div class="card-image-hero">
+          <img src="<%= listing.image.url %>" alt="<%= listing.title %>" class="card-image-inner">
         </div>
-      </div>
+        <div class="card-price-tag">&#8377; <%= listing.price.toLocaleString("en-IN") %>
+        </div>
+        <div class="card-info-minimal">
+          <div class="card-header-flex">
+            <h4 class="card-title-main" title="<%= listing.title %>">
+              <%= listing.title %>
+            </h4>
+          </div>
+          <div class="card-meta-row">
+            <div class="card-meta-pill">
+              <i class="fa-solid fa-location-dot"></i>
+              <%= listing.location %>
+            </div>
+          </div>
+        </div>
       </a>
-    <% } %>
+      <% } %>
   </div>
