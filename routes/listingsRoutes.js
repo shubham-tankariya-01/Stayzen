@@ -4,8 +4,10 @@ const wrapAsync = require("../utils/wrapAsync.js");
 const ExpressError = require("../utils/xpressError.js");
 const { listingSchema } = require("../schema.js");
 const { IsLoggedIn, IsOwner } = require("../middleware.js");
-const listingsController = require("../controllers/listings.js")
-
+const listingsController = require("../controllers/listings.js");
+const multer = require("multer");
+const { storage } = require("../cloudConfig.js");
+const upload = multer({ storage });
 
 const validateListing = (req, res, next) => {
   let { error } = listingSchema.validate(req.body);
@@ -17,22 +19,35 @@ const validateListing = (req, res, next) => {
   }
 };
 
-
-router.route("/")
+router
+  .route("/")
   .get(wrapAsync(listingsController.index))
-  .post(IsLoggedIn, validateListing, wrapAsync(listingsController.createListing));
+  .post(
+    IsLoggedIn,
+    validateListing,
+    upload.single("listing[image][url]"),
+    wrapAsync(listingsController.createListing),
+  );
 
 //get a form for adding a new listing(Create route)
 router.get("/new", IsLoggedIn, listingsController.createListingForm);
 
-router.route("/:id")
+router
+  .route("/:id")
   .get(wrapAsync(listingsController.viewListing))
-  .put(IsLoggedIn, IsOwner, validateListing, wrapAsync(listingsController.editListing))
+  .put(
+    IsLoggedIn,
+    IsOwner,
+    validateListing,
+    wrapAsync(listingsController.editListing),
+  )
   .delete(IsLoggedIn, IsOwner, wrapAsync(listingsController.destroyListing));
 
 //Get a form for edit any listing(edit route)
 router.get(
-  "/:id/edit", IsLoggedIn, IsOwner,
+  "/:id/edit",
+  IsLoggedIn,
+  IsOwner,
   wrapAsync(listingsController.editListingForm),
 );
 

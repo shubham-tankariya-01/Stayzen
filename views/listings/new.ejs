@@ -7,7 +7,7 @@
         <p>Share your artisanal space with the world</p>
       </div>
 
-      <form action="/listings" method="POST" class="needs-validation" novalidate>
+      <form action="/listings" method="POST" class="needs-validation" novalidate enctype="multipart/form-data">
 
         <!-- Property Name — full width -->
         <div class="artisanal-field-group">
@@ -24,9 +24,9 @@
         </div>
 
         <!-- Cover Image — full width -->
-        <div class="artisanal-field-group">
+        <div class="artisanal-field-group ">
           <label for="image" class="field-label-artisanal">Cover Image URL</label>
-          <input type="text" name="listing[image]" id="image" class="field-control-artisanal"
+          <input type="file" name="listing[image][url]" id="image" class="field-control-artisanal form-control"
             placeholder="https://unsplash.com/photos/...">
         </div>
 

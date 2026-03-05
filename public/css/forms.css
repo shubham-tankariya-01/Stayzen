@@ -1,6 +1,6 @@
-/* ==========================================================================
-   Light Artisanal Form Mastery — Clean & Wide (forms.css)
-   ========================================================================== */
+.field-control-artisanal{
+    padding: 20px;
+}
 
 .artisanal-form-hero {
     min-height: 85vh;
@@ -72,7 +72,7 @@
     width: 100%;
     padding: 0.95rem 1.2rem;
     background: #f8fafc;
-    border: 1.5px solid #edf0f4;
+    border: 1.5px solid #cfcfd2;
     border-radius: var(--radius-md);
     color: var(--color-text-main);
     font-family: 'Inter', sans-serif;

@@ -3,8 +3,6 @@ const router = express.Router({ mergeParams: true });
 const wrapAsync = require("../utils/wrapAsync.js");
 const ExpressError = require("../utils/xpressError.js");
 const { reviewSchema } = require("../schema.js");
-const Review = require("../Models/review.js");
-const Listing = require("../Models/listing.js");
 const { IsLoggedIn, IsAuthor } = require("../middleware.js");
 const reviewController = require('../controllers/reviews.js');
 
@@ -21,7 +19,6 @@ const validateReview = (req, res, next) => {
 
 //creating reviews
 router.post("/", IsLoggedIn, validateReview, wrapAsync(reviewController.createReview));
-
 
 //deleting reviews
 router.delete("/:reviewId", IsAuthor, reviewController.destroyReview);

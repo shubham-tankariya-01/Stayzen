@@ -16,7 +16,7 @@ const listingSchema = new Schema({
         type : String
        },
        url : {
-        type : String,
+        type : String ,
         default : "Deafult Link for Defualt and Null condition",
         set : (v)=> v==="" ? "Default Link" : v
        }
