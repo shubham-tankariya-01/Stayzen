@@ -143,3 +143,44 @@ main>.container-artisanal:has(.explore-header) {
 .card-meta-pill i {
     margin-right: 5px;
 }
+
+/* ==========================================================================
+   Mobile Responsiveness (Small Screens)
+   ========================================================================== */
+@media (max-width: 576px) {
+
+    main>.container-artisanal:has(.listing-grid-artisanal),
+    main>.container-artisanal:has(.explore-header) {
+        padding: 0 1.25rem;
+    }
+
+    .explore-header {
+        margin-bottom: 2rem !important;
+    }
+
+    .explore-header h1 {
+        font-size: 2.2rem;
+    }
+
+    .listing-grid-artisanal {
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+        gap: 1.25rem 1rem;
+    }
+
+    .card-artisanal {
+        border-radius: var(--radius-md);
+    }
+
+    .card-price-tag {
+        font-size: 0.75rem;
+        padding: 0.25rem 0.6rem;
+    }
+
+    .card-info-minimal {
+        padding: 0.85rem;
+    }
+
+    .card-title-main {
+        font-size: 0.85rem;
+    }
+}

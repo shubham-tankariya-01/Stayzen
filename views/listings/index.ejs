@@ -1,8 +1,15 @@
 <% layout("/layouts/boilerplate.ejs") %>
 
   <div class="explore-header mb-5">
-    <h1 class="display-5 fw-900 mb-1">Explore the <span style="color: var(--color-primary);">unseen</span></h1>
-    <p class="text-muted ">Premium artisanal stays curated for the bold.</p>
+    <% if(typeof searchPath !=='undefined' && searchPath) { %>
+      <h1 class="display-5 fw-900 mb-1">Stays in <span style="color: var(--color-primary); text-transform: capitalize;">
+          <%= query %>
+        </span></h1>
+      <p class="text-muted ">Discovering curated artisanal stays for your journey.</p>
+      <% } else { %>
+        <h1 class="display-5 fw-900 mb-1">Explore the <span style="color: var(--color-primary);">unseen</span></h1>
+        <p class="text-muted ">Premium artisanal stays curated for the bold.</p>
+        <% } %>
   </div>
 
   <div class="listing-grid-artisanal">

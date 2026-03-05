@@ -32,6 +32,9 @@ router
 //get a form for adding a new listing(Create route)
 router.get("/new", IsLoggedIn, listingsController.createListingForm);
 
+// Search route (MUST be above /:id)
+router.get("/search", wrapAsync(listingsController.search));
+
 router
   .route("/:id")
   .get(wrapAsync(listingsController.viewListing))
@@ -39,6 +42,7 @@ router
     IsLoggedIn,
     IsOwner,
     validateListing,
+    upload.single("listing[image][url]"),
     wrapAsync(listingsController.editListing),
   )
   .delete(IsLoggedIn, IsOwner, wrapAsync(listingsController.destroyListing));
@@ -50,5 +54,6 @@ router.get(
   IsOwner,
   wrapAsync(listingsController.editListingForm),
 );
+
 
 module.exports = router;

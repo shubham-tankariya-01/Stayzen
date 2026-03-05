@@ -414,3 +414,59 @@ body {
     overflow-y: auto;
     white-space: pre-wrap;
 }
+
+/* ==========================================================================
+   Mobile Responsiveness (Small Screens)
+   ========================================================================== */
+@media (max-width: 576px) {
+    .master-card-image {
+        height: 35vh;
+    }
+
+    .master-info-area {
+        padding: 1.75rem 1.25rem;
+    }
+
+    .master-header-row {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+        padding-bottom: 1.5rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .master-title {
+        font-size: 1.8rem;
+        line-height: 1.2;
+    }
+
+    .master-price-large {
+        font-size: 1.9rem;
+    }
+
+    .master-actions-bar {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 0.75rem;
+    }
+
+    /* If they are stacked or wide, we might need 1fr on very small screens */
+    @media (max-width: 400px) {
+        .master-actions-bar {
+            grid-template-columns: 1fr;
+        }
+    }
+
+    .master-leave-review-area {
+        padding: 2rem 1.5rem;
+    }
+
+    .artisanal-review-tile {
+        height: auto;
+        min-height: 200px;
+    }
+
+    .master-review-grid {
+        grid-template-columns: 1fr;
+    }
+}

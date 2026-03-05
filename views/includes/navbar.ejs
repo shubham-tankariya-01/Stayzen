@@ -6,25 +6,39 @@
       <span>Stayzen</span>
     </a>
 
-    <!-- Links Pill -->
-    <div class="nav-links-pill">
+    <!-- Links Pill (Desktop) -->
+    <div class="nav-links-pill d-none d-md-flex">
       <a href="/listings" class="pill-link-item active-explore">Explore</a>
       <a href="/listings/new" class="pill-link-item active-host">Host</a>
+      <form action="/listings/search" class="search-form-pill d-none d-lg-flex">
+        <input type="text" name="query" placeholder="Search destinations" class="search-input" required>
+        <button type="submit" class="search-btn">
+          <i class="fa-solid fa-magnifying-glass"></i>
+        </button>
+      </form>
       <% if(!currentUser) { %>
         <a href="/login" class="pill-link-item">Login</a>
         <% } %>
     </div>
 
+    <!-- Hamburger Toggle (Mobile) -->
+    <button class="nav-hamburger-toggle d-flex d-md-none" id="mobileMenuToggle" aria-label="Toggle Menu">
+      <div class="hamburger-line"></div>
+      <div class="hamburger-line middle"></div>
+      <div class="hamburger-line"></div>
+    </button>
+
     <!-- User/Action Pill -->
     <% if(!currentUser) { %>
-      <a href="/signup" class="nav-user-pill" style="background: var(--color-primary); color: white; border: none;">
+      <a href="/signup" class="nav-user-pill d-none d-sm-flex"
+        style="background: var(--color-primary); color: white; border: none;">
         <span>Join Now</span>
         <div class="user-avatar-pill" style="background: white; color: var(--color-primary);">
           <i class="fa-solid fa-arrow-right"></i>
         </div>
       </a>
       <% } else { %>
-        <div class="dropdown">
+        <div class="dropdown d-none d-sm-block">
           <a href="#" class="nav-user-pill dropdown-toggle border-0" data-bs-toggle="dropdown">
             <span>Profile</span>
             <div class="user-avatar-pill">
@@ -44,5 +58,65 @@
           </ul>
         </div>
         <% } %>
+  </div>
+</div>
+
+<!-- Mobile Menu Overlay -->
+<div class="mobile-nav-overlay" id="mobileNavOverlay">
+  <div class="mobile-menu-card">
+    <div class="mobile-menu-header">
+      <div class="nav-brand-pill">
+        <i class="fa-solid fa-cube"></i>
+        <span>Stayzen</span>
+      </div>
+      <button class="menu-close-btn" id="mobileMenuClose">&times;</button>
+    </div>
+
+    <div class="mobile-menu-links">
+      <div class="mobile-search-container">
+        <form action="/listings/search" class="mobile-search-form">
+          <input type="text" name="query" placeholder="Where to?" class="mobile-search-input" required>
+          <button type="submit" class="mobile-search-btn">
+            <i class="fa-solid fa-magnifying-glass"></i>
+          </button>
+        </form>
+      </div>
+      <a href="/listings" class="mobile-menu-item">
+        <i class="fa-solid fa-compass"></i>
+        <span>Explore Listings</span>
+      </a>
+      <a href="/listings/new" class="mobile-menu-item">
+        <i class="fa-solid fa-house-chimney-user"></i>
+        <span>Host Your Space</span>
+      </a>
+      <% if(!currentUser) { %>
+        <hr class="menu-divider">
+        <a href="/login" class="mobile-menu-item">
+          <i class="fa-solid fa-arrow-right-to-bracket"></i>
+          <span>Login</span>
+        </a>
+        <a href="/signup" class="mobile-menu-item primary-highlight">
+          <i class="fa-solid fa-user-plus"></i>
+          <span>Join Now</span>
+        </a>
+        <% } else { %>
+          <hr class="menu-divider">
+          <div class="mobile-user-info">
+            <div class="user-avatar-pill" style="width: 44px; height: 44px; font-size: 1.1rem;">
+              <%= currentUser.username[0].toUpperCase() %>
+            </div>
+            <div class="user-text">
+              <span class="username">
+                <%= currentUser.username %>
+              </span>
+              <span class="user-label">Logged In</span>
+            </div>
+          </div>
+          <a href="/logout" class="mobile-menu-item text-danger">
+            <i class="fa-solid fa-power-off"></i>
+            <span>Logout</span>
+          </a>
+          <% } %>
+    </div>
   </div>
 </div>

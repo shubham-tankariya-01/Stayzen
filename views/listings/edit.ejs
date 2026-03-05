@@ -7,7 +7,8 @@
         <p>Update the details of your artisanal listing</p>
       </div>
 
-      <form action="/listings/<%= listing._id %>?_method=put" method="post" class="needs-validation" novalidate>
+      <form action="/listings/<%= listing._id %>?_method=put" method="post" class="needs-validation" novalidate
+        enctype="multipart/form-data">
         <div class="artisanal-field-group">
           <label for="title" class="field-label-artisanal">Property Name</label>
           <input type="text" name="listing[title]" id="title" class="field-control-artisanal"
@@ -21,9 +22,11 @@
         </div>
 
         <div class="artisanal-field-group">
-          <label for="image" class="field-label-artisanal">Update Image URL</label>
-          <input type="text" name="listing[image]" id="image" class="field-control-artisanal"
-            value="<%= listing.image.url %>" required>
+          <label for="image" class="field-label-artisanal">Update Image</label>
+          <div class="image-preview-container" id="imagePreviewContainer">
+            <img src="<%= listing.image.url %>" alt="Current Image" id="imagePreview" class="image-preview-img">
+          </div>
+          <input type="file" name="listing[image][url]" id="image" class="field-control-artisanal form-control">
         </div>
 
         <div class="field-row-split mb-3">

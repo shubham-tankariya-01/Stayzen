@@ -24,10 +24,12 @@
         </div>
 
         <!-- Cover Image — full width -->
-        <div class="artisanal-field-group ">
-          <label for="image" class="field-label-artisanal">Cover Image URL</label>
-          <input type="file" name="listing[image][url]" id="image" class="field-control-artisanal form-control"
-            placeholder="https://unsplash.com/photos/...">
+        <div class="artisanal-field-group">
+          <label for="image" class="field-label-artisanal">Cover Image</label>
+          <div class="image-preview-container" id="imagePreviewContainer" style="display: none;">
+            <img src="" alt="Preview" id="imagePreview" class="image-preview-img">
+          </div>
+          <input type="file" name="listing[image][url]" id="image" class="field-control-artisanal form-control">
         </div>
 
         <!-- Price + Country — share one row -->

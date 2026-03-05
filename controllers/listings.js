@@ -24,7 +24,7 @@ module.exports.createListing = async (req, res) => {
   let fileName = req.file.filename;
   let NewListing = new Listing(req.body.listing);
   NewListing.owner = req.user._id;
-  NewListing.image={url,fileName}
+  NewListing.image = { url, fileName }
   await NewListing.save();
   req.flash("success", "New listing Created");
   res.redirect("/listings");
@@ -43,7 +43,15 @@ module.exports.editListingForm = async (req, res) => {
 }
 module.exports.editListing = async (req, res) => {
   let { id } = req.params;
-  await Listing.findByIdAndUpdate(id, { ...req.body.listing });
+  const listing = await Listing.findByIdAndUpdate(id, { ...req.body.listing });
+  // console.log(listing)
+  if (typeof req.file !== "undefined") {
+    let url = req.file.path;
+    let fileName = req.file.filename;
+    listing.image = { url, fileName }
+    await listing.save();
+  }
+
   req.flash("success", "Listing Updated");
   res.redirect(`/listings/${id}`);
 }
@@ -53,4 +61,24 @@ module.exports.destroyListing = async (req, res) => {
   await Listing.findByIdAndDelete(id);
   req.flash("success", "Listing Deleted");
   res.redirect("/listings");
+}
+
+module.exports.search = async (req, res) => {
+  let { query } = req.query;
+  if (!query) {
+    req.flash("error", "Please enter a location to search");
+    return res.redirect("/listings");
+  }
+
+  // Fuzzy search for location
+  let allListings = await Listing.find({
+    location: { $regex: query, $options: "i" }
+  });
+
+  if (allListings.length === 0) {
+    req.flash("error", `No listings found for "${query}"`);
+    return res.redirect("/listings");
+  }
+
+  res.render("listings/index.ejs", { allListings, query, searchPath: true });
 }

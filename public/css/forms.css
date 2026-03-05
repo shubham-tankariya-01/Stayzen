@@ -1,4 +1,4 @@
-.field-control-artisanal{
+.field-control-artisanal {
     padding: 20px;
 }
 
@@ -170,4 +170,61 @@
 
 .form-footer-secondary a:hover {
     text-decoration: underline;
+}
+
+/* ---- Image Preview ---- */
+.image-preview-container {
+    width: 100%;
+    margin-top: 0.75rem;
+    margin-bottom: 1.25rem;
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    border: 1.5px solid #cfcfd2;
+    aspect-ratio: 16 / 9;
+    background: #f8fafc;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.02);
+}
+
+.image-preview-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: opacity 0.3s ease;
+}
+
+/* ==========================================================================
+   Mobile Responsiveness (Small Screens)
+   ========================================================================== */
+@media (max-width: 576px) {
+    .artisanal-form-hero {
+        padding: 4rem 0.75rem;
+    }
+
+    .master-form-card {
+        padding: 2.25rem 1.5rem;
+        border-radius: var(--radius-lg);
+    }
+
+    .form-header-main {
+        margin-bottom: 1.5rem;
+        padding-bottom: 1.25rem;
+    }
+
+    .form-header-main h2 {
+        font-size: 1.7rem;
+    }
+
+    .field-row-split {
+        grid-template-columns: 1fr;
+        gap: 0;
+    }
+
+    .form-submit-btn,
+    .form-cancel-btn {
+        padding: 0.8rem 1.5rem;
+        font-size: 0.85rem;
+    }
 }
