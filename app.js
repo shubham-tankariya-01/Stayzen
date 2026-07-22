@@ -3,7 +3,7 @@ require("dotenv").config();
 const express = require("express");
 const app = express();
 const mongoose = require("mongoose");
-const port = 8080;
+const port = 8000;
 const path = require("path");
 const methodOverride = require("method-override");
 const MONGO_URL = "mongodb://127.0.0.1:27017/stayzen";
@@ -45,15 +45,11 @@ const sessionOptions = {
   resave: false,
   saveUninitialized: true,
   cookie: {
-    expires: Date.now() + 7 * 24 * 60 * 60 * 1000,
     maxAge: 7 * 24 * 60 * 60 * 1000,
     httpOnly: true,
   }
 }
-// root
-app.get("/", (req, res) => {
-  res.send("I am ROOT");
-});
+// root moved below middleware
 
 app.use(session(sessionOptions));
 app.use(flash());
@@ -73,6 +69,11 @@ app.use((req, res, next) => {
   next();
 });
 
+
+// root
+app.get("/", (req, res) => {
+  res.render("landing.ejs");
+});
 
 //routes
 app.use("/listings", listingsRouter);

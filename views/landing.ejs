@@ -1,0 +1,58 @@
+<% layout("/layouts/boilerplate.ejs") %>
+
+<div class="landing-page-wrapper">
+    <!-- Hero Section -->
+    <section class="hero-section-artisanal">
+        <div class="hero-content">
+            <h1 class="hero-title">Experience the <span class="text-highlight">Extraordinary</span></h1>
+            <p class="hero-subtitle">Discover premium, handpicked artisanal stays designed for your perfect getaway.</p>
+            <div class="hero-actions">
+                <a href="/listings" class="btn-premium hero-btn-primary">Explore Stays <i class="fa-solid fa-arrow-right ms-2"></i></a>
+                <a href="/listings/new" class="btn-premium hero-btn-secondary">Host your space</a>
+            </div>
+        </div>
+        
+        <!-- Animated floating elements for visual interest -->
+        <div class="floating-shape shape-1"></div>
+        <div class="floating-shape shape-2"></div>
+        <div class="floating-shape shape-3"></div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features-section">
+        <div class="section-heading text-center mb-5">
+            <h2>Why Choose <span style="color: var(--color-primary);">Stayzen</span>?</h2>
+            <p class="text-muted">We curate the best so you can experience the best.</p>
+        </div>
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon"><i class="fa-solid fa-gem"></i></div>
+                <h3 class="feature-title">Curated Collections</h3>
+                <p class="feature-text">Every stay on Stayzen is handpicked by our team of experts for design, comfort, and character.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon"><i class="fa-solid fa-shield-halved"></i></div>
+                <h3 class="feature-title">Verified Hosts</h3>
+                <p class="feature-text">We verify every host to ensure your stay is safe, secure, and exactly as promised.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon"><i class="fa-solid fa-bolt"></i></div>
+                <h3 class="feature-title">Seamless Booking</h3>
+                <p class="feature-text">Our streamlined platform makes finding and reserving your dream getaway effortless.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action Banner -->
+    <section class="cta-banner mt-5">
+        <div class="cta-content">
+            <h2>Ready for your next adventure?</h2>
+            <p>Join thousands of travelers exploring the world with Stayzen.</p>
+            <% if(!currentUser) { %>
+                <a href="/signup" class="btn-premium cta-btn">Join Stayzen Now</a>
+            <% } else { %>
+                <a href="/listings" class="btn-premium cta-btn">View All Collections</a>
+            <% } %>
+        </div>
+    </section>
+</div>

@@ -29,7 +29,7 @@
             <p class="mb-4">
               <%= listing.description %>
             </p>
-            <% if (currentUser && listing.owner._id.equals(currentUser._id)) { %>
+            <% if (typeof currentUser !== 'undefined' && currentUser && listing.owner && listing.owner._id.equals(currentUser._id)) { %>
               <div class="master-actions-bar">
                 <a href="/listings/<%= listing._id %>/edit" class="btn-premium-soft rounded-pill px-4"
                   style="text-decoration: none; text-align: center; display: flex; justify-content: center; align-items: center;">Edit
@@ -45,12 +45,12 @@
           <div class="master-sidebar">
             <div class="master-host-box">
               <div class="user-avatar-pill" style="width:48px;height:48px;font-size:1rem;">
-                <%= listing.owner.username[0].toUpperCase() %>
+                <%= listing.owner ? listing.owner.username[0].toUpperCase() : '?' %>
               </div>
               <div>
                 <span class="text-muted x-small d-block text-uppercase fw-900 letter-spacing-1">Hosted by</span>
                 <span class="fw-bold fs-5">
-                  <%= listing.owner.username %>
+                  <%= listing.owner ? listing.owner.username : 'Unknown Host' %>
                 </span>
               </div>
             </div>
@@ -60,7 +60,7 @@
     </div>
     <!-- ===== Write a Review (at the bottom) ===== -->
     <div class="master-leave-review-area mt-5 px-4">
-      <% if (currentUser) { %>
+      <% if (typeof currentUser !== 'undefined' && currentUser) { %>
         <h3 class="fw-900 mb-2" style="font-size:1.4rem;letter-spacing:-0.5px;">Seal the memory</h3>
         <p class="text-muted mb-4" style="font-size:0.9rem;">Your perspective adds value to this artisanal sanctuary.
         </p>
@@ -122,10 +122,10 @@
                   <div class="d-flex align-items-center gap-2">
                     <div class="user-avatar-pill"
                       style="width:28px;height:28px;background:#f1f5f9;color:var(--color-primary);font-size:0.8rem;border:1px solid #e2e8f0;">
-                      <%= review.author.username[0].toUpperCase() %>
+                      <%= review.author ? review.author.username[0].toUpperCase() : '?' %>
                     </div>
                     <span class="fw-bold" style="font-size:0.9rem;">
-                      <%= review.author.username %>
+                      <%= review.author ? review.author.username : 'Unknown' %>
                     </span>
                   </div>
                   <div class="starability-result" data-rating="<%= review.rating %>"
@@ -138,7 +138,7 @@
                 </p>
 
                 <!-- Delete (author only) — simple text link, no circle -->
-                <% if (currentUser && review.author._id.equals(currentUser._id)) { %>
+                <% if (typeof currentUser !== 'undefined' && currentUser && review.author && review.author._id.equals(currentUser._id)) { %>
                   <form action="/listings/<%= listing._id %>/reviews/<%= review._id %>?_method=delete" method="post"
                     class="review-delete-form">
                     <button type="submit" class="review-delete-link review-delete-btn">
